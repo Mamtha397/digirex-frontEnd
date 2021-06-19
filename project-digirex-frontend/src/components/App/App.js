@@ -27,16 +27,7 @@ function App() {
 
   return (
     <div className="wrapper">
-      <BrowserRouter>
-        <Switch>
-          <Route path="/dashboard">
-            <Dashboard />
-          </Route>
-          <Route path="/preferences">
-            <Preferences />
-          </Route>
-        </Switch>
-      </BrowserRouter>
+        <Dashboard />
     </div>
   );
 }
