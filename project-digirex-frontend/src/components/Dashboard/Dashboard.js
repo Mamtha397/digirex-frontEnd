@@ -4,7 +4,7 @@ import useToken from '../App/useToken';
 export default function Dashboard() {
     const [username, setUserName] = useState();
     const { token, setToken } = useToken();
-    const [data, setData] = useState();
+    const [data, setData] = useState([]);
 
 
 
@@ -25,7 +25,7 @@ export default function Dashboard() {
     const result = await loginUser({
       name: username,
     });
-    setData(result?.result)
+    setData([result?.result])
   }
   return(
       <div>
@@ -39,6 +39,19 @@ export default function Dashboard() {
             <button type="submit">Submit</button>
             </div>
         </form>
+        {data.length !== 0 && data?.map((d, index) => (
+            <div key={index}>
+                <hr/>
+                <label>Name - </label>{d?.name}
+                <br/>
+                <label>Date To - </label>{d?.dateTo}
+                <br/>
+                <label>Date From - </label>{d?.dateFrom}
+                <br/>
+                <label>Note - </label>{d?.note}
+                <hr/>
+            </div>
+        ))}
       </div>
   );
 }
